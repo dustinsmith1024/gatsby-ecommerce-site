@@ -1,42 +1,46 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from 'react'
+import { NavLink, Flex, Box } from 'theme-ui'
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import ShoppingCartIcon from '../components/shopping-cart-icon'
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
+  <Box
+    as="header"
+    sx={{
+      backgroundColor: `primary`,
+      marginBottom: `1.45rem`
     }}
   >
-    <div
+    <Flex
+      as="nav"
       style={{
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
+        justifyContent: 'space-evenly'
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+      <NavLink
+        to={'/'}
+        as={Link}
+      >
+        Home
+      </NavLink>
+      <NavLink to={'/products'} as={Link}>
+        Products
+      </NavLink>
+      <ShoppingCartIcon />
+    </Flex>
+  </Box>
 )
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  siteTitle: PropTypes.string
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  siteTitle: ``
 }
 
 export default Header
